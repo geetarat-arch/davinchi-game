@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>Davinchi Game | KOR-ARS OUTING 2026</title>
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #1e293b, #334155);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    /* สีตามคอลัมน์ */
+    .col-20 .cell {
+      background: #22c55e; /* เขียว */
+    }
+
+    .col-20 .cell:hover {
+      background: #16a34a;
+    }
+
+    .col-50 .cell {
+      background: #3b82f6; /* น้ำเงิน */
+    }
+
+    .col-50 .cell:hover {
+      background: #2563eb;
+    }
+
+    .col-100 .cell {
+      background: #f59e0b; /* ส้ม */
+    }
+
+    .col-100 .cell:hover {
+      background: #d97706;
+    }
+
+    .col-200 .cell {
+      background: #ef4444; /* แดง */
+    }
+
+    .col-200 .cell:hover {
+      background: #dc2626;
+    }
+    .container {
+      background: #ffffff;
+      width: 90%;
+      max-width: 1200px;
+      padding: 32px;
+      border-radius: 24px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+      text-align: center;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 32px;
+    }
+
+    h2 {
+      /* margin-top: 8px;
+      font-weight: normal;
+      font-size: 48px;
+      color: #475569; */
+      margin-top: 8px;
+      font-family: 'Kanit', sans-serif;
+      font-size: 48px;
+      font-weight: 800;   /* ความหนา */
+      color: #475569;
+      letter-spacing: 2px;
+      
+    }
+
+    /* layout 4 columns with fixed rows */
+    .board {
+      margin-top: 32px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      align-items: start; /* fix แถว ไม่ให้ยืด */
+    }
+
+    .column {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .cell {
+      height: 60px;
+      border-radius: 14px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      background: #4f46e5;
+      color: #ffffff;
+      transition: transform 0.1s, background 0.2s;
+    }
+
+    .cell:hover {
+      background: #4338ca;
+      transform: translateY(-2px);
+    }
+
+    .cell:active {
+      transform: scale(0.97);
+    }
+
+    @media (max-width: 768px) {
+      .board {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>🧠 Davinchi Game</h1>
+    <h2>KOR-ARS OUTING 2026</h2>
+
+    <div class="board">
+      <!-- Column 1 : 10 boxes -->
+      <div class="column col-20">
+        <div class="cell" onclick="location.href='q20_1.html'">20</div>
+        <div class="cell" onclick="location.href='q20_2.html'">20</div>
+        <div class="cell" onclick="location.href='q20_3.html'">20</div>
+        <div class="cell" onclick="location.href='q20_4.html'">20</div>
+        <div class="cell" onclick="location.href='q20_5.html'">20</div>
+        <div class="cell" onclick="location.href='q20_6.html'">20</div>
+        <div class="cell" onclick="location.href='q20_7.html'">20</div>
+        <div class="cell" onclick="location.href='q20_8.html'">20</div>
+        <div class="cell" onclick="location.href='q20_9.html'">20</div>
+        <div class="cell" onclick="location.href='q20_10.html'">20</div>
+      </div>
+
+      <!-- Column 2 : 6 boxes -->
+      <div class="column col-50">
+        <div class="cell" onclick="location.href='q50_1.html'">50</div>
+        <div class="cell" onclick="location.href='q50_2.html'">50</div>
+        <div class="cell" onclick="location.href='q50_3.html'">50</div>
+        <div class="cell" onclick="location.href='q50_4.html'">50</div>
+        <div class="cell" onclick="location.href='q50_5.html'">50</div>
+        <div class="cell" onclick="location.href='q50_6.html'">50</div>
+      </div>
+
+      <!-- Column 3 : 2 boxes -->
+      <div class="column col-100">
+        <div class="cell">100</div>
+        <div class="cell">100</div>
+      </div>
+
+      <!-- Column 4 : 1 box -->
+      <div class="column col-200">
+        <div class="cell">200</div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

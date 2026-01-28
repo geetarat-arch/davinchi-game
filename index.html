@@ -57,7 +57,8 @@
 
     h1 {
       margin: 0;
-      font-size: 32px;
+      font-family: 'Kanit', sans-serif;
+      font-size: 58px;
     }
 
     h2 {
@@ -65,18 +66,19 @@
       font-weight: normal;
       font-size: 48px;
       color: #475569; */
-      margin-top: 8px;
+      margin-top: 10px;
+      margin-bottom: 2px;
       font-family: 'Kanit', sans-serif;
       font-size: 48px;
       font-weight: 800;   /* ความหนา */
       color: #475569;
-      letter-spacing: 2px;
-      
+      letter-spacing: 4px;
+      word-spacing: 10px;
     }
 
     /* layout 4 columns with fixed rows */
     .board {
-      margin-top: 32px;
+      margin-top: 3px;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 20px;
@@ -117,8 +119,75 @@
         grid-template-columns: repeat(2, 1fr);
       }
     }
+    .cell.played {
+      background: #94a3b8 !important;
+      color: #1e293b;
+      cursor: not-allowed;
+      position: relative;
+    }
+
+    .cell.played::after {
+      content: "✔";
+      position: absolute;
+      top: 6px;
+      right: 10px;
+      font-size: 18px;
+    }
+    .cell.visited {
+      opacity: 0.6;
+      position: relative;
+    }
+
+    .cell.visited::after {
+      content: "✓";
+      position: absolute;
+      top: 6px;
+      right: 10px;
+      font-size: 18px;
+      color: #fff;
+    }
+    .reset-btn {
+      margin-top: 30px;
+      padding: 12px 24px;
+      font-size: 18px;
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+      background: #ef4444;
+      color: white;
+      font-weight: bold;
+    }
+
+    .reset-btn:hover {
+      background: #dc2626;
+    }
   </style>
 </head>
+<script>
+  function goPage(url, id) {
+    // บันทึกว่าเคยกดแล้ว
+    localStorage.setItem(id, "visited");
+    location.href = url;
+  }
+
+  // ตอนโหลดหน้า เช็คว่าเคยกดอะไรไปแล้วบ้าง
+  window.onload = function () {
+    document.querySelectorAll('.cell').forEach(cell => {
+      const id = cell.dataset.id;
+      if (localStorage.getItem(id) === "visited") {
+        cell.classList.add('visited');
+      }
+    });
+  };
+
+  // Reset เกม
+  function resetGame() {
+    if (confirm("ต้องการ Reset เกมทั้งหมดใช่ไหม?")) {
+      localStorage.clear();
+      location.reload();
+    }
+  }
+</script>
 <body>
 
   <div class="container">
@@ -128,38 +197,40 @@
     <div class="board">
       <!-- Column 1 : 10 boxes -->
       <div class="column col-20">
-        <div class="cell" onclick="location.href='q20_1.html'">20</div>
-        <div class="cell" onclick="location.href='q20_2.html'">20</div>
-        <div class="cell" onclick="location.href='q20_3.html'">20</div>
-        <div class="cell" onclick="location.href='q20_4.html'">20</div>
-        <div class="cell" onclick="location.href='q20_5.html'">20</div>
-        <div class="cell" onclick="location.href='q20_6.html'">20</div>
-        <div class="cell" onclick="location.href='q20_7.html'">20</div>
-        <div class="cell" onclick="location.href='q20_8.html'">20</div>
-        <div class="cell" onclick="location.href='q20_9.html'">20</div>
-        <div class="cell" onclick="location.href='q20_10.html'">20</div>
+        <div class="cell" data-id="q20_1" onclick="goPage('q20_1.html','q20_1')">20</div>
+        <div class="cell" data-id="q20_2" onclick="goPage('q20_2.html','q20_2')">20</div>
+        <div class="cell" data-id="q20_3" onclick="goPage('q20_3.html','q20_3')">20</div>
+        <div class="cell" data-id="q20_4" onclick="goPage('q20_4.html','q20_4')">20</div>
+        <div class="cell" data-id="q20_5" onclick="goPage('q20_5.html','q20_5')">20</div>
+        <div class="cell" data-id="q20_6" onclick="goPage('q20_6.html','q20_6')">20</div>
+        <div class="cell" data-id="q20_7" onclick="goPage('q20_7.html','q20_7')">20</div>
+        <div class="cell" data-id="q20_8" onclick="goPage('q20_8.html','q20_8')">20</div>
+        <div class="cell" data-id="q20_9" onclick="goPage('q20_9.html','q20_9')">20</div>
+        <div class="cell" data-id="q20_10" onclick="goPage('q20_10.html','q20_10')">20</div>
       </div>
 
       <!-- Column 2 : 6 boxes -->
       <div class="column col-50">
-        <div class="cell" onclick="location.href='q50_1.html'">50</div>
-        <div class="cell" onclick="location.href='q50_2.html'">50</div>
-        <div class="cell" onclick="location.href='q50_3.html'">50</div>
-        <div class="cell" onclick="location.href='q50_4.html'">50</div>
-        <div class="cell" onclick="location.href='q50_5.html'">50</div>
-        <div class="cell" onclick="location.href='q50_6.html'">50</div>
+        <div class="cell" data-id="q50_1" onclick="goPage('q50_1.html','q50_1')">50</div>
+        <div class="cell" data-id="q50_2" onclick="goPage('q50_2.html','q50_2')">50</div>
+        <div class="cell" data-id="q50_3" onclick="goPage('q50_3.html','q50_3')">50</div>
+        <div class="cell" data-id="q50_4" onclick="goPage('q50_4.html','q50_4')">50</div>
+        <div class="cell" data-id="q50_5" onclick="goPage('q50_5.html','q50_5')">50</div>
+        <div class="cell" data-id="q50_6" onclick="goPage('q50_6.html','q50_6')">50</div>
       </div>
 
       <!-- Column 3 : 2 boxes -->
       <div class="column col-100">
-        <div class="cell">100</div>
-        <div class="cell">100</div>
+        <div class="cell" data-id="q100_1" onclick="goPage('q100_1.html','q100_1')">100</div>
+        <div class="cell" data-id="q100_2" onclick="goPage('q100_2.html','q100_2')">100</div>
+        <div class="cell" data-id="q100_1" onclick="goPage('q100_3.html','q100_3')">100</div>
       </div>
 
       <!-- Column 4 : 1 box -->
       <div class="column col-200">
-        <div class="cell">200</div>
+        <div class="cell" data-id="q200_1" onclick="goPage('q200_1.html','q200_1')">200</div>
       </div>
+      <button onclick="resetGame()" class="reset-btn">🔄 Reset Game</button>
     </div>
   </div>
 
